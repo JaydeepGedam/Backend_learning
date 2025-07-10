@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Middleware to log the request URL
 app.use(function (req, res, next) {
     console.log('Request URL:', req.url);
@@ -9,8 +12,13 @@ app.use(function (req, res, next) {
 
 // Route to handle GET requests to the root URL
 app.get('/', (req, res, next) => {
-    // res.send('Hello, World!');
-    return next(new Error('An error occurred!'));
+    res.send('Hello, World!');
+    // return next(new Error('An error occurred!'));
+});
+
+app.get("/profile/:username", (req, res) => {
+    const username = req.params.username;
+    res.send(`Profile of ${username}`);
 });
 
 // Middleware to handle errors
