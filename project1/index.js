@@ -28,6 +28,16 @@ app.get('/', function(req, res) {
     res.render("index", { tasks });
 });
 
+app.get('/files/:filename', (req, res) => {
+    fs.readFile(path.join(__dirname, 'files', req.params.filename), 'utf-8', (err, data) => {
+        res.render("show", { title: req.params.filename.replace(/\.txt$/, ''), description: data });
+    });
+});
+
+app.get('/edit/:filename', (req, res) => {
+    res.render("edit", { title: req.params.filename });
+});
+
 // Add task route
 app.post('/add', (req, res) => {
     let { title, description } = req.body;
@@ -38,6 +48,23 @@ app.post('/add', (req, res) => {
     const filePath = path.join(__dirname, 'files', safeTitle + '.txt');
     fs.writeFileSync(filePath, description);
     res.redirect('/');
+});
+
+//edit file name
+app.post('/edit', (req, res) => {
+    const oldFileName = req.body.previousfilename, newFileName = req.body.newfilename;
+    if (!oldFileName || !newFileName) return res.redirect('/');
+    fs.rename(
+        path.join(__dirname, 'files', oldFileName + '.txt'),
+        path.join(__dirname, 'files', newFileName + '.txt'),
+        (err) => {
+            if (err) {
+                console.error("Error renaming file:", err);
+                return res.redirect('/');
+            }
+            res.redirect('/');
+        }
+    );
 });
 
 app.listen(3000);

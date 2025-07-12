@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-[#424546]">
+    <div class="m-4 flex flex-col gap-4">
+        <a href="/" class="text-zinc-200 text-sm inline-block">Back to Home</a>
+        <div class="flex flex-wrap gap-4 w-full">
+            <% if (users.length === 0) { %>
+                <p class="text-zinc-400">No users yet.</p>
+            <% } %>
+            <% users.forEach(user => { %>
+            <div class="w-1/6 bg-[#111214] p-6 rounded-lg shadow-lg">
+                <img src="<%= user.image %>" alt="" class="w-32 h-32 rounded-full mx-auto object-cover object-top">
+                <hr class="my-4 border-zinc-700">
+                <h1 class="text-md text-zinc-500 text-center mt-4"><%= user.name %></h1>
+                <h1 class="text-sm text-zinc-500 text-center"><%= user.email %></h1>
+                <div class="w-full flex justify-between mt-4">
+                    <button type="button" onclick="window.location.href='/edit/<%= user._id %>'" class="text-zinc-400 border-1 border-zinc-500 rounded-sm px-3 py-1">Edit</button>
+                    <button type="button" onclick="window.location.href='/delete/<%= user._id %>'" class="text-zinc-400 border-1 border-zinc-500 rounded-sm px-3 py-1">Delete</button>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</body>
+</html>

@@ -25,6 +25,8 @@
                     <li class="bg-zinc-700 p-4 rounded">
                         <h2 class="text-xl font-semibold"><%= task.title %></h2>
                         <p><%= task.description %></p>
+                        <a href="/files/<%= task.title %>.txt" class="text-blue-400 underline">View File</a>
+                        <a href="/edit/<%= task.title %>" class="text-blue-400 underline">Edit</a>
                     </li>
                 <% }) %>
             <% } else { %>

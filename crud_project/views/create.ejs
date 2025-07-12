@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-[#424546] w-full h-screen flex items-start mt-20 justify-center">
+    <div class="max-w-md mx-auto mt-10 bg-[#111214] p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl text-white">Create User</h1>
+        <form action="/create" method="POST" class="mt-3 text-white">
+            <input type="text" name="name" placeholder="Name" class="w-full p-2 px-4 mb-4 border border-zinc-700 rounded outline-none " required>
+            <input type="email" name="email" placeholder="Email" class="w-full p-2 px-4 mb-4 border border-zinc-700 rounded outline-none " required>
+            <input type="text" name="image" placeholder="Image URL" class="w-full p-2 px-4 mb-4 border border-zinc-700 rounded outline-none " required>
+            <div class="w-full flex justify-between mt-2">
+                <button type="button" onclick="window.location.href='/users'" class="w-1/4 bg-[#2c2c2e] text-white p-2 rounded-xl">Users</button>
+                <button type="submit" class="w-1/4 bg-white text-black p-2 rounded-xl">Create</button>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

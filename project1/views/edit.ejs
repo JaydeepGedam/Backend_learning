@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-zinc-800 text-white">
+    <div class="p-4">
+        <a href="/" class="mb-4 inline-block text-blue-400">Back to Home</a>
+        <h1 class="text-2xl font-bold mb-4">Edit FileName</h1>
+        <form action="/edit" method="POST" class="w-1/4">
+            <input type="text" name="previousfilename" placeholder="Previos Title"
+                class="w-full p-2 rounded bg-zinc-700 text-white outline-none" value="<%= title %>" required>
+            <input type="text" name="newfilename" placeholder="Enter new file name here"
+                class="w-full p-2 rounded bg-zinc-700 text-white outline-none mt-3" required>
+            <button type="submit" class="mt-2 px-4 py-2 bg-yellow-600 rounded">Update</button>
+        </form>
+    </div>
+</body>
+</html>
